@@ -33,7 +33,11 @@ input {
 }
 
 select{
-
+    font-family: 'Oswald', sans-serif;
+    font-size: 48px;
+    color: #6743eb;
+    background-color: rgba(166, 120, 212, 0.678);
+    border: none;
 }
 
 #Age{
