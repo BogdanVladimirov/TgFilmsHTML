@@ -9,7 +9,7 @@ body{
     background-image: url("../SpaceShipImage.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    background: linear-gradient(to right, #eee 0%, #eef calc(10% - 160px), transparent calc(50% - 30px), transparent calc(50% + 30px), #eef calc(75% + 160px), #eee 100%),url( https://bogdanvladimirov.github.io/TgFilmsHTML/SpaceShipImage.jpg) no-repeat top center;
+    background: linear-gradient(to right, #eee 0%, #eef calc(10% - 160px), transparent calc(50% - 30px), transparent calc(50% + 30px), #eef calc(80% + 160px), #eee 100%),url( https://bogdanvladimirov.github.io/TgFilmsHTML/SpaceShipImage.jpg) no-repeat top center;
 }
 
 p{
