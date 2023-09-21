@@ -9,6 +9,7 @@ body{
     background-image: url("../SpaceShipImage.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-color: #470736;
 }
 
 p{
