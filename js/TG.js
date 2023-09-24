@@ -1,3 +1,5 @@
+const Form = document.getElementById("form");
+
 let Films = {
     "Barbie": {
         "years": 2023,
@@ -17,3 +19,80 @@ let Films = {
         "genre": ["cartoon", "science", "fiction", "fantasy", "action", "adventure"]
     },
 };
+
+
+
+
+
+function FilmByName()
+{
+    let request = prompt("Введите название");
+    for (let key of Object.keys(Films))
+    {
+        if(key == request)
+        {
+            console.log(Films[key]);
+        }
+    }
+}
+
+
+function FilmByYear(request)
+{
+    for (let key of Object.keys(Films))
+    {
+        for (let key2 of Object.keys(Films[key]))
+        {
+            if(Films[key][key2] == request)
+            {
+                console.log(key);
+            }
+        }
+    }
+}
+
+function FilmByContry(request)
+{
+    for (let key of Object.keys(Films))
+    {
+        
+        for (let key2 of Object.keys(Films[key]))
+        {
+            for (let index of Object.keys(Films[key][key2]))
+            {
+                if(Films[key][key2][index] == request)
+                {
+                    console.log(key);
+                }
+            }
+        }
+    }
+}
+
+function FilmByGerne(request)
+{
+    for (let key of Object.keys(Films))
+    {
+        
+        for (let key2 of Object.keys(Films[key]))
+        {
+            for (let index of Object.keys(Films[key][key2]))
+            {
+                if(Films[key][key2][index] == request)
+                {
+                    console.log(key);
+                }
+            }
+        }
+    }
+}
+
+Form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    let data = new FormData(Form);
+    data = Object.fromEntries(data.entries());
+    console.log(data);
+    FilmByYear(data.FromYear);
+    FilmByContry(data.Contry);
+    FilmByGerne(data.Categories);
+});
