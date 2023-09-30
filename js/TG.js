@@ -41,33 +41,42 @@ function FilmByYear(request)
 {
     for (let key of Object.keys(Films))
     {
-        for (let key2 of Object.keys(Films[key]))
+        if(Films[key]["years"] == request)
         {
-            if(Films[key][key2] == request)
-            {
-                console.log(key);
-            }
+            console.log(key);
         }
     }
 }
 
-function FilmByContry(request)
+function FilmByContry1(request)
 {
     for (let key of Object.keys(Films))
     {
-        
-        for (let key2 of Object.keys(Films[key]))
+        if(Films[key]["contry"] == request)
         {
-            for (let index of Object.keys(Films[key][key2]))
-            {
-                if(Films[key][key2][index] == request)
-                {
-                    console.log(key);
-                }
-            }
+            console.log(key);
         }
+
     }
 }
+
+// function FilmByContry(request)
+// {
+//     for (let key of Object.keys(Films))
+//     {
+        
+//         for (let key2 of Object.keys(Films[key]))
+//         {
+//             for (let index of Object.keys(Films[key][key2]))
+//             {
+//                 if(Films[key][key2][index] == request)
+//                 {
+//                     console.log(key);
+//                 }
+//             }
+//         }
+//     }
+// }
 
 function FilmByGerne(request)
 {
@@ -91,8 +100,8 @@ Form.addEventListener("submit", (event) => {
     event.preventDefault();
     let data = new FormData(Form);
     data = Object.fromEntries(data.entries());
-    console.log(data);
-    FilmByYear(data.FromYear);
-    FilmByContry(data.Contry);
-    FilmByGerne(data.Categories);
+    // console.log(data);
+    //FilmByYear(data.FromYear);
+    FilmByContry1(data.Contry);
+    // FilmByGerne(data.Categories);
 });
