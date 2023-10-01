@@ -160,9 +160,9 @@ Form.addEventListener("submit", (event) => {
     //
     if(data.ToYear != "NS" && data.Contry == "NS" && data.Categories == "NS")
     {
+        tg.sendData(FilmByYear(data.FromYear, data.ToYear));
         let Button = document.getElementById("search");
         Button.style.backgroundColor = "red";
-        tg.sendData(FilmByYear(data.FromYear, data.ToYear));
     }
     if(data.ToYear == "NS" && data.Contry != "NS" && data.Categories == "NS")
     {
