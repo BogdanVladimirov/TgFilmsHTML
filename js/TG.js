@@ -26,70 +26,118 @@ let Films = {
 
 function FilmByName()
 {
+    const Match = [];
     let request = prompt("Введите название");
     for (let key of Object.keys(Films))
     {
         if(key == request)
         {
-            console.log(Films[key]);
+            
         }
     }
 }
 
-
-function FilmByYear(request)
+function FilmByYear(FromYear, ToYear)
 {
+    const Match = [];
     for (let key of Object.keys(Films))
     {
-        if(Films[key]["years"] == request)
+        if(Films[key]["years"] >= FromYear && Films[key]["years"] <= ToYear)
         {
-            console.log(key);
+            Match.push(key);
         }
     }
 }
 
-function FilmByContry1(request)
+function FilmByContry(request)
 {
+    const Match = [];
     for (let key of Object.keys(Films))
     {
-        if(Films[key]["contry"] == request)
+        for (let cont of Object.keys(Films[key]["contry"]))
         {
-            console.log(key);
+            console.log()
+            if(Films[key]["contry"][cont] == request)
+            {
+                Match.push(key);
+            }
         }
-
     }
 }
-
-// function FilmByContry(request)
-// {
-//     for (let key of Object.keys(Films))
-//     {
-        
-//         for (let key2 of Object.keys(Films[key]))
-//         {
-//             for (let index of Object.keys(Films[key][key2]))
-//             {
-//                 if(Films[key][key2][index] == request)
-//                 {
-//                     console.log(key);
-//                 }
-//             }
-//         }
-//     }
-// }
 
 function FilmByGerne(request)
 {
+    const Match = [];
     for (let key of Object.keys(Films))
     {
-        
-        for (let key2 of Object.keys(Films[key]))
+        for (let genre of Object.keys(Films[key]["genre"]))
         {
-            for (let index of Object.keys(Films[key][key2]))
+            if(Films[key]["genre"][genre] == request)
             {
-                if(Films[key][key2][index] == request)
+                Match.push(key);
+            }
+        }
+    }
+}
+
+function FilmByYearAndContry(FromYear, ToYear, Contry)
+{
+    const Match = [];
+    for(let key of Object.keys(Films))
+    {
+        for(let contry of Object.keys(Films[key]["contry"]))
+        {
+            if(Films[key]["years"] >= FromYear && Films[key]["years"] <= ToYear && Films[key]["contry"][contry] == Contry)
+            {
+                Match.push(key);
+            }
+        }
+    }
+}
+
+function FilmByYearAndGerne(FromYear, ToYear, Genre)
+{
+    const Match = [];
+    for(let key of Object.keys(Films))
+    {
+        for(let genre of Object.keys(Films[key]["genre"]))
+        {
+            if(Films[key]["years"] >= FromYear && Films[key]["years"] <= ToYear && Films[key]["genre"][genre] == Genre)
+            {
+                Match.push(key);
+            }
+        }
+    }
+}
+
+function FilmByContryAndGerne(Contry, Genre)
+{
+    const Match = [];
+    for(let key of Object.keys(Films))
+    {
+        for(let contry of Object.keys(Films[key]["contry"]))
+        {        for(let genre of Object.keys(Films[key]["genre"]))
+            {
+                if(Films[key]["contry"][contry] == Contry && Films[key]["genre"][genre] == Genre)
                 {
-                    console.log(key);
+                    Match.push(key);
+                }
+            }
+        }
+    }
+}
+
+function FilmByContryAndGerneAndYear(FromYear, ToYear, Contry, Genre)
+{
+    const Match = [];
+    for(let key of Object.keys(Films))
+    {
+        for(let contry of Object.keys(Films[key]["contry"]))
+        {        for(let genre of Object.keys(Films[key]["genre"]))
+            {
+                if(Films[key]["contry"][contry] == Contry && Films[key]["genre"][genre] == Genre && Films[key]["years"] >= FromYear && Films[key]["years"] <= ToYear)
+                {
+                    Match.push(key);
                 }
             }
         }
@@ -100,8 +148,37 @@ Form.addEventListener("submit", (event) => {
     event.preventDefault();
     let data = new FormData(Form);
     data = Object.fromEntries(data.entries());
-    // console.log(data);
-    //FilmByYear(data.FromYear);
-    FilmByContry1(data.Contry);
-    // FilmByGerne(data.Categories);
+    if(data.FromYear == "NS")
+    {
+        data.FromYear = 0;
+    }
+    //
+    if(data.ToYear != "NS" && data.Contry == "NS" && data.Categories == "NS")
+    {
+        FilmByYear(data.FromYear, data.ToYear);
+    }
+    if(data.ToYear == "NS" && data.Contry != "NS" && data.Categories == "NS")
+    {
+        FilmByContry(data.Contry);
+    }
+    if(data.ToYear == "NS" && data.Contry == "NS" && data.Categories != "NS")
+    {
+        FilmByGerne(data.Categories);
+    }
+    if(data.ToYear != "NS" && data.Contry != "NS" && data.Categories == "NS")
+    {
+        FilmByYearAndContry(data.FromYear, data.ToYear, data.Contry);
+    }
+    if(data.ToYear != "NS" && data.Contry == "NS" && data.Categories != "NS")
+    {
+        FilmByYearAndGerne(data.FromYear, data.ToYear, data.Categories);
+    }
+    if(data.ToYear == "NS" && data.Contry != "NS" && data.Categories != "NS")
+    {
+        FilmByContryAndGerne(data.Contry, data.Categories);
+    }
+    if(data.ToYear != "NS" && data.Contry != "NS" && data.Categories != "NS")
+    {
+        FilmByContryAndGerneAndYear(data.FromYear, data.ToYear, data.Contry, data.Categories);
+    }
 });
