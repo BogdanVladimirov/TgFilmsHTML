@@ -48,6 +48,10 @@ function FilmByYear(FromYear, ToYear)
             Match.push(key);
         }
     }
+    
+    let result = JSON.stringify(Match);
+    console.log(result, typeof result);
+    return result;
 }
 
 function FilmByContry(request)
@@ -156,7 +160,7 @@ Form.addEventListener("submit", (event) => {
     //
     if(data.ToYear != "NS" && data.Contry == "NS" && data.Categories == "NS")
     {
-        FilmByYear(data.FromYear, data.ToYear);
+        tg.sendData(FilmByYear(data.FromYear, data.ToYear));
     }
     if(data.ToYear == "NS" && data.Contry != "NS" && data.Categories == "NS")
     {
