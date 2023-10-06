@@ -151,8 +151,8 @@ function FilmByContryAndGerneAndYear(FromYear, ToYear, Contry, Genre)
 
 Form.addEventListener("submit", (event) => {
     event.preventDefault();
-    let dataSend = new FormData(Form);
-    dataSend = Object.fromEntries(data.entries());
+    let data = new FormData(Form);
+    data = Object.fromEntries(data.entries());
     dataSend = JSON.stringify(data);
     if(data.FromYear == "NS")
     {
@@ -162,6 +162,7 @@ Form.addEventListener("submit", (event) => {
     if(data.ToYear != "NS" && data.Contry == "NS" && data.Categories == "NS")
     {
         tg.sendData(FilmByYear(dataSend));
+        console.log(dataSend);
         let Button = document.getElementById("search");
         Button.style.backgroundColor = "red";
     }
