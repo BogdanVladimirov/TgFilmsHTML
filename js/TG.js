@@ -164,7 +164,7 @@ Form.addEventListener("submit", (event) => {
         tg.sendData(FilmByYear(dataSend));
         console.log(dataSend);
         let Button = document.getElementById("search");
-        Button.style.backgroundColor = "red";
+        Button.style.backgroundColor = "black";
     }
     if(data.ToYear == "NS" && data.Contry != "NS" && data.Categories == "NS")
     {
