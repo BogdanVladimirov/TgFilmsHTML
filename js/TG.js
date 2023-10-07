@@ -1,5 +1,5 @@
 const Form = document.getElementById("form");
-let tg = window.Telegram.WebApp;
+//let tg = window.Telegram.WebApp;
 
 let Films = {
     "Barbie": {
@@ -161,10 +161,10 @@ Form.addEventListener("submit", (event) => {
     //
     if(data.ToYear != "NS" && data.Contry == "NS" && data.Categories == "NS")
     {
-        tg.sendData(dataSend);
+        //tg.sendData(FilmByYear(dataSend));
         console.log(dataSend);
         let Button = document.getElementById("search");
-        Button.style.backgroundColor = "red";
+        Button.style.backgroundColor = "black";
     }
     if(data.ToYear == "NS" && data.Contry != "NS" && data.Categories == "NS")
     {
