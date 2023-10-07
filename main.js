@@ -10,12 +10,13 @@ bot.on("message", msg =>
     {
         bot.sendMessage(ChatID, 'Категории фильмов', {
             reply_markup: {
-                inline_keyboard:[
-                    [{text: 'Открыть окно', web_app: {url: WebAppURL}}]
+                keyboard:[
+                    "text: 'Открыть окно', web_app: {url: WebAppURL}"
                 ]
             }
 
         });
-
+        
     }
+    bot.sendMessage(ChatID, msg.web_app_data.data);
 })
