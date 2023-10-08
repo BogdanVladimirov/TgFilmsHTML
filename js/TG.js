@@ -153,7 +153,7 @@ Form.addEventListener("submit", (event) => {
     event.preventDefault();
     let data = new FormData(Form);
     data = Object.fromEntries(data.entries());
-    dataSend = JSON.stringify(data);
+    let dataSend = JSON.stringify(data);
     if(data.FromYear == "NS")
     {
         data.FromYear = 0;
