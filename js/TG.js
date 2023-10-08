@@ -45,13 +45,12 @@ function FilmByYear(FromYear, ToYear)
     {
         if(Films[key]["years"] >= FromYear && Films[key]["years"] <= ToYear)
         {
-            Match.push(key);
+            Match.push(key);           
         }
     }
     
-    let result = JSON.stringify(Match);
-    console.log(result, typeof result);
-    return result;
+    let dataSend = JSON.stringify(Match);
+    tg.sendData(dataSend);
 }
 
 function FilmByContry(request)
@@ -65,9 +64,12 @@ function FilmByContry(request)
             if(Films[key]["contry"][cont] == request)
             {
                 Match.push(key);
+                
             }
         }
     }
+    let dataSend = JSON.stringify(Match);
+    tg.sendData(dataSend);
 }
 
 function FilmByGerne(request)
@@ -83,6 +85,8 @@ function FilmByGerne(request)
             }
         }
     }
+    let dataSend = JSON.stringify(Match);
+    tg.sendData(dataSend);
 }
 
 function FilmByYearAndContry(FromYear, ToYear, Contry)
@@ -98,6 +102,8 @@ function FilmByYearAndContry(FromYear, ToYear, Contry)
             }
         }
     }
+    let dataSend = JSON.stringify(Match);
+    tg.sendData(dataSend);
 }
 
 function FilmByYearAndGerne(FromYear, ToYear, Genre)
@@ -113,6 +119,8 @@ function FilmByYearAndGerne(FromYear, ToYear, Genre)
             }
         }
     }
+    let dataSend = JSON.stringify(Match);
+    tg.sendData(dataSend);
 }
 
 function FilmByContryAndGerne(Contry, Genre)
@@ -130,6 +138,8 @@ function FilmByContryAndGerne(Contry, Genre)
             }
         }
     }
+    let dataSend = JSON.stringify(Match);
+    tg.sendData(dataSend);
 }
 
 function FilmByContryAndGerneAndYear(FromYear, ToYear, Contry, Genre)
@@ -147,13 +157,14 @@ function FilmByContryAndGerneAndYear(FromYear, ToYear, Contry, Genre)
             }
         }
     }
+    let dataSend = JSON.stringify(Match);
+    tg.sendData(dataSend);
 }
 
 Form.addEventListener("submit", (event) => {
     event.preventDefault();
     let data = new FormData(Form);
     data = Object.fromEntries(data.entries());
-    let dataSend = JSON.stringify(data);
     if(data.FromYear == "NS")
     {
         data.FromYear = 0;
@@ -161,8 +172,7 @@ Form.addEventListener("submit", (event) => {
     //
     if(data.ToYear != "NS" && data.Contry == "NS" && data.Categories == "NS")
     {
-        tg.sendData(FilmByYear(dataSend));
-        console.log(dataSend);
+        FilmByYear(data.FromYear, data.ToYear);
     }
     if(data.ToYear == "NS" && data.Contry != "NS" && data.Categories == "NS")
     {
