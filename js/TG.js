@@ -175,7 +175,7 @@ Form.addEventListener("submit", (event) => {
     //
     if(data.ToYear != "NS" && data.Contry == "NS" && data.Categories == "NS")
     {
-        FilmByYear(data.FromYear, data.ToYear);
+        FilmByYear(+data.FromYear, +data.ToYear);
     }
     if(data.ToYear == "NS" && data.Contry != "NS" && data.Categories == "NS")
     {
