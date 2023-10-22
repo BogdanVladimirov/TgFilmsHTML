@@ -22,24 +22,28 @@ let Films = {
         "genre": ["cartoon", "science", "fiction", "fantasy", "action", "adventure"],
         "path": "/films/2023/Spider-Man: Across the Spider-Verse.mp4"
     },
+
+    "Hotel Transylvania: Transormania": {
+        "years": 2022,
+        "contry": ["USA"],
+        "genre": ["caroon", "fantasy", "horror"],
+        "path": "/films/2022/Hotel Transylvania: Transormania.mp4"
+    },
+
+    "Venom: Let There Be Carnage": {
+        "years": 2021,
+        "contry": ["USA", "China"],
+        "genre": ["fantasy", "action", "horror"],
+        "path": "/films/2021/Venom: Let There Be Carnage.mp4"
+    }
+
+
 };
 
 
 
 
 
-function FilmByName()
-{
-    const Match = [];
-    let request = prompt("Введите название");
-    for (let key of Object.keys(Films))
-    {
-        if(key == request)
-        {
-            
-        }
-    }
-}
 
 function FilmByYear(FromYear, ToYear)
 {
@@ -48,7 +52,7 @@ function FilmByYear(FromYear, ToYear)
     {
         if(Films[key]["years"] >= FromYear && Films[key]["years"] <= ToYear)
         {
-            Match.push(Films[key]["path"]);           
+            Match.push(key["path"]);           
         }
     }
     
@@ -66,7 +70,7 @@ function FilmByContry(request)
             console.log()
             if(Films[key]["contry"][cont] == request)
             {
-                Match.push(Films[key]["path"]);
+                Match.push(key["path"]);
                 
             }
         }
@@ -84,7 +88,7 @@ function FilmByGerne(request)
         {
             if(Films[key]["genre"][genre] == request)
             {
-                Match.push(Films[key]["path"]);
+                Match.push(key["path"]);
             }
         }
     }
@@ -101,7 +105,7 @@ function FilmByYearAndContry(FromYear, ToYear, Contry)
         {
             if(Films[key]["years"] >= FromYear && Films[key]["years"] <= ToYear && Films[key]["contry"][contry] == Contry)
             {
-                Match.push(Films[key]["path"]);
+                Match.push(key["path"]);
             }
         }
     }
@@ -118,7 +122,7 @@ function FilmByYearAndGerne(FromYear, ToYear, Genre)
         {
             if(Films[key]["years"] >= FromYear && Films[key]["years"] <= ToYear && Films[key]["genre"][genre] == Genre)
             {
-                Match.push(Films[key]["path"]);
+                Match.push(key["path"]);
             }
         }
     }
@@ -136,7 +140,7 @@ function FilmByContryAndGerne(Contry, Genre)
             {
                 if(Films[key]["contry"][contry] == Contry && Films[key]["genre"][genre] == Genre)
                 {
-                    Match.push(Films[key]["path"]);
+                    Match.push(key["path"]);
                 }
             }
         }
@@ -155,7 +159,7 @@ function FilmByContryAndGerneAndYear(FromYear, ToYear, Contry, Genre)
             {
                 if(Films[key]["contry"][contry] == Contry && Films[key]["genre"][genre] == Genre && Films[key]["years"] >= FromYear && Films[key]["years"] <= ToYear)
                 {
-                    Match.push(Films[key]["path"]);
+                    Match.push(key["path"]);
                 }
             }
         }
@@ -175,7 +179,7 @@ Form.addEventListener("submit", (event) => {
     //
     if(data.ToYear != "NS" && data.Contry == "NS" && data.Categories == "NS")
     {
-        FilmByYear(+data.FromYear, +data.ToYear);
+        FilmByYear(data.FromYear, data.ToYear);
     }
     if(data.ToYear == "NS" && data.Contry != "NS" && data.Categories == "NS")
     {
