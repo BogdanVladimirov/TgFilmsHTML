@@ -10,13 +10,24 @@ bot.on("message", msg =>
     {
         bot.sendMessage(ChatID, 'Категории фильмов', {
             reply_markup: {
-                keyboard:[
-                    "text: 'Открыть окно', web_app: {url: WebAppURL}"
+                inline_keyboard:[
+                    [{text: 'Открыть окно', web_app: {url: WebAppURL}}]
                 ]
             }
 
         });
-        
+
     }
-    bot.sendMessage(ChatID, msg.web_app_data.data);
 })
+function filmByName() {
+    const resultname = [];
+    const name = data.name.toLowerCase();  // name - это название фильма
+    for (let key of Object.keys(CINEMA_LIBRARY)) {
+        if (key.toLowerCase() == name)  {
+            resultname.push(CINEMA_LIBRARY[key]);
+        } else if (key.toLowerCase().includes(name)) {
+            resultname.push(CINEMA_LIBRARY[key]);
+        }
+    }
+    console.log(resultname);
+}
