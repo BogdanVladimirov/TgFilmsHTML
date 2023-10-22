@@ -11,7 +11,7 @@ body{
 
 p{
     font-family: 'Russo One', sans-serif;
-    font-size: 35px;
+    font-size: 33px;
     margin-top: 21px;
     margin-bottom: 21px;
     color: #ffffff;
@@ -54,3 +54,6 @@ select{
     height: 28px;
     width: 110px;
 }
+
+
+
