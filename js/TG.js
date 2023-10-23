@@ -1,209 +1,163 @@
-const Form = document.getElementById("form");
-const tg = window.Telegram.WebApp;
-
-let Films = {
+let CINEMA_LIBRARY = {
     "Barbie": {
-        "years": 2023,
-        "contry": ["USA", "Great Britan"],
-        "genre": ["comedy", "adventure", "fantasy"],
-        "path": "/films/2023/Barbie.mp4"
+        "year":    2023,
+        "country": ["USA"],
+        "genre":   ["Comedy", "Adventure", "Fantasy"],
+        "filename": "/Films/2023/Barbie.jpg"
     },
-
+    
     "Oppenheimer": {
-        "years": 2023,
-        "contry": ["USA", "Great Britan"],
-        "genre": ["drama", "biography", "history"],
-        "path": "/films/2023/Oppenheimer.mp4"
+        "year":    2023,
+        "country": ["USA", "Great Britan"],
+        "genre":   ["Drama", "Biography Film", "Historical Film"],
+        "filename": "/Films/2023/Oppenheimer.jpg"
     },
 
     "Spider-Man: Across the Spider-Verse": {
-        "years": 2023,
-        "contry": ["USA"],
-        "genre": ["cartoon", "science", "fiction", "fantasy", "action", "adventure"],
-        "path": "/films/2023/Spider-Man: Across the Spider-Verse.mp4"
+        "year":    2023,
+        "country": ["USA"],
+        "genre":   ["Cartoon", "Superhero Film", "Action Movie", "Fiction"],
+        "filename": "Films/2023/Spider-Man: Across the Spider-Verse.jpg"
     },
 
-    "Hotel Transylvania: Transormania": {
-        "years": 2022,
-        "contry": ["USA"],
-        "genre": ["caroon", "fantasy", "horror"],
-        "path": "/films/2022/Hotel Transylvania: Transormania.mp4"
+    "Avatar: The Way Of Water": {
+        "year":    2022,
+        "country": ["USA", "Great Britan"],
+        "genre":   ["Fictiion", "Adventure", "Sci-fi"],
+        "filename": "Films/2022/Avatar: The_Way_Of_Water.jpg"
     },
 
-    "Venom: Let There Be Carnage": {
-        "years": 2021,
-        "contry": ["USA", "China"],
-        "genre": ["fantasy", "action", "horror"],
-        "path": "/films/2021/Venom: Let There Be Carnage.mp4"
+    "Bullet Train": {
+        "year":    2022,
+        "country": ["USA"],
+        "genre":   ["Comedy", "Action Movie"],
+        "filename": "Films/2022/Bullet_Train.jpg"
+    },
+
+    "Puss In Boots": {
+        "year":    2022,
+        "country": ["USA", "Great Britan"],
+        "genre":   ["Fictiion", "Adventure", "Fantasy"],
+        "filename": "Films/2022/Puss_In_Boots: The_Last_Wish.jpeg"
+    },
+
+    "Free Guy": {
+        "year":    2022,
+        "country": ["USA", "Great Britan"],
+        "genre":   ["Fictiion", "Action Movie", "Comedy"],
+        "filename": "Films/2021/Free_Guy.jpeg"
+    },
+
+    "Free Guy": {
+        "year":    2022,
+        "country": ["USA", "Great Britan"],
+        "genre":   ["Fictiion", "Fantasy", "Biography Movie"],
+        "filename": "Films/2021/Cruella.jpg"
     }
-
-
 };
 
-
-
-
-
-
-function FilmByYear(FromYear, ToYear)
-{
-    const Match = [];
-    for (let key of Object.keys(Films))
-    {
-        if(Films[key]["years"] >= FromYear && Films[key]["years"] <= ToYear)
-        {
-            Match.push(Films[key]);           
-        }
-    }
-    
-    let dataSend = JSON.stringify(Match);
-    console.log(dataSend)
-    tg.sendData(dataSend);
-}
-
-function FilmByContry(request)
-{
-    const Match = [];
-    for (let key of Object.keys(Films))
-    {
-        for (let cont of Object.keys(Films[key]["contry"]))
-        {
-            console.log()
-            if(Films[key]["contry"][cont] == request)
-            {
-                Match.push(Films[key]);
-                
-            }
-        }
-    }
-    let dataSend = JSON.stringify(Match);
-    tg.sendData(dataSend);
-}
-
-function FilmByGerne(request)
-{
-    const Match = [];
-    for (let key of Object.keys(Films))
-    {
-        for (let genre of Object.keys(Films[key]["genre"]))
-        {
-            if(Films[key]["genre"][genre] == request)
-            {
-                Match.push(Films[key]);
-            }
-        }
-    }
-    let dataSend = JSON.stringify(Match);
-    tg.sendData(dataSend);
-}
-
-function FilmByYearAndContry(FromYear, ToYear, Contry)
-{
-    const Match = [];
-    for(let key of Object.keys(Films))
-    {
-        for(let contry of Object.keys(Films[key]["contry"]))
-        {
-            if(Films[key]["years"] >= FromYear && Films[key]["years"] <= ToYear && Films[key]["contry"][contry] == Contry)
-            {
-                Match.push(Films[key]);
-            }
-        }
-    }
-    let dataSend = JSON.stringify(Match);
-    tg.sendData(dataSend);
-}
-
-function FilmByYearAndGerne(FromYear, ToYear, Genre)
-{
-    const Match = [];
-    for(let key of Object.keys(Films))
-    {
-        for(let genre of Object.keys(Films[key]["genre"]))
-        {
-            if(Films[key]["years"] >= FromYear && Films[key]["years"] <= ToYear && Films[key]["genre"][genre] == Genre)
-            {
-                Match.push(Films[key]);
-            }
-        }
-    }
-    let dataSend = JSON.stringify(Match);
-    tg.sendData(dataSend);
-}
-
-function FilmByContryAndGerne(Contry, Genre)
-{
-    const Match = [];
-    for(let key of Object.keys(Films))
-    {
-        for(let contry of Object.keys(Films[key]["contry"]))
-        {        for(let genre of Object.keys(Films[key]["genre"]))
-            {
-                if(Films[key]["contry"][contry] == Contry && Films[key]["genre"][genre] == Genre)
-                {
-                    Match.push(Films[key]);
-                }
-            }
-        }
-    }
-    let dataSend = JSON.stringify(Match);
-    tg.sendData(dataSend);
-}
-
-function FilmByContryAndGerneAndYear(FromYear, ToYear, Contry, Genre)
-{
-    const Match = [];
-    for(let key of Object.keys(Films))
-    {
-        for(let contry of Object.keys(Films[key]["contry"]))
-        {        for(let genre of Object.keys(Films[key]["genre"]))
-            {
-                if(Films[key]["contry"][contry] == Contry && Films[key]["genre"][genre] == Genre && Films[key]["years"] >= FromYear && Films[key]["years"] <= ToYear)
-                {
-                    Match.push(Films[key]);
-                }
-            }
-        }
-    }
-    let dataSend = JSON.stringify(Match);
-    tg.sendData(dataSend);
-}
+const Form = document.getElementById("Forma");
+const tg = window.Telegram.WebApp;
 
 Form.addEventListener("submit", (event) => {
     event.preventDefault();
     let data = new FormData(Form);
     data = Object.fromEntries(data.entries());
-    if(data.FromYear == "NS")
-    {
-        data.FromYear = 0;
+    // console.log(data);
+    // data = JSON.stringify(data);
+    // tg.sendData(data);
+
+
+    if (data.name) {
+        const resultname = [];
+        const name = data.name.toLowerCase();  // name - это название фильма
+        for (let key of Object.keys(CINEMA_LIBRARY)) {
+            if (key.toLowerCase() == name)  {
+                resultname.push(CINEMA_LIBRARY[key]);
+            } else if (key.toLowerCase().includes(name)) {
+                resultname.push(CINEMA_LIBRARY[key]);
+            }
+        }
+        console.log(resultname);
+        const jdata = JSON.stringify(resultname);
+        tg.sendData(jdata);
     }
-    //
-    if(data.ToYear != "NS" && data.Contry == "NS" && data.Categories == "NS")
-    {
-        FilmByYear(data.FromYear, data.ToYear);
+
+    if (data.Year1 && data.Year2) {
+        const resultyear1 = [];
+        for (let key of Object.keys(CINEMA_LIBRARY)) {
+            if (CINEMA_LIBRARY[key]["year"] >= +data.Year1 && CINEMA_LIBRARY[key]["year"] <= +data.Year2) {
+                resultyear1.push(CINEMA_LIBRARY[key]);
+            }
+        
+        }
+        console.log(resultyear1);
     }
-    if(data.ToYear == "NS" && data.Contry != "NS" && data.Categories == "NS")
-    {
-        FilmByContry(data.Contry);
+
+    if (data.Country) {
+        const resultcountry = [];
+        for (let key of Object.keys(CINEMA_LIBRARY)) {
+            if  (CINEMA_LIBRARY[key]["country"].includes(data.Country)) {
+                resultcountry.push(CINEMA_LIBRARY[key]);
+            }
+        }
+        console.log(resultcountry);
     }
-    if(data.ToYear == "NS" && data.Contry == "NS" && data.Categories != "NS")
-    {
-        FilmByGerne(data.Categories);
+
+    if (data.Genre) {
+        const resultgenre = [];
+        for (let key of Object.keys(CINEMA_LIBRARY)) {
+            if  (CINEMA_LIBRARY[key]["genre"].includes(data.Genre)) {
+                resultgenre.push(CINEMA_LIBRARY[key]);
+            }
+        }
+        console.log(resultgenre);
     }
-    if(data.ToYear != "NS" && data.Contry != "NS" && data.Categories == "NS")
-    {
-        FilmByYearAndContry(data.FromYear, data.ToYear, data.Contry);
-    }
-    if(data.ToYear != "NS" && data.Contry == "NS" && data.Categories != "NS")
-    {
-        FilmByYearAndGerne(data.FromYear, data.ToYear, data.Categories);
-    }
-    if(data.ToYear == "NS" && data.Contry != "NS" && data.Categories != "NS")
-    {
-        FilmByContryAndGerne(data.Contry, data.Categories);
-    }
-    if(data.ToYear != "NS" && data.Contry != "NS" && data.Categories != "NS")
-    {
-        FilmByContryAndGerneAndYear(data.FromYear, data.ToYear, data.Contry, data.Categories);
-    }
+
+    // if(data.year) {
+    //     const resultyear1 = [];
+    //     const year = data.Year1;
+    //     for (let key of Object.keys(CINEMA_LIBRARY)) {
+    //         if (+CINEMA_LIBRARY[key]["year"] == +year)
+    //             resultyear1.push(CINEMA_LIBRARY[key]["year"])
+    //             // console.log(key, CINEMA_LIBRARY[key]["year"]);
+    //             break;
+    //         }
+    //         console.log(resultyear1)
+    //     }
+
+    
+    // if (CINEMA_LIBRARY[key]["year"].includes(data.Year) && CINEMA_LIBRARY[key]["country"].includes(data.Country) && CINEMA_LIBRARY[key]["genre"].includes(data.Genre)) {  
+    //         let entireresult = [];
+    //         entireresult.push(CINEMA_LIBRARY[key]);
+    // }
+    //     console.log(entireresult)
+
+
+// # поиск по названию
+// """
+// value = input("Укажите название фильма: ")
+// for key in CINEMA_LIBRARY:
+//     # если названия совпадают или значение пользователя частично есть в названии фильма
+//     if key.lower() == value.lower() or value.lower() in key.lower():
+//         print(key, CINEMA_LIBRARY[key])
+//         break
+// else:
+//     print("По вашему запросу фильм не найден")
+// """
+
+
+// # поиск по жанру
+// value = input("Укажите жанр фильма: ")
+
+// index = 0  # количество совпадений
+
+// for key in CINEMA_LIBRARY:
+//     if value.capitalize() in CINEMA_LIBRARY[key]["genre"]:
+//         print(key, CINEMA_LIBRARY[key])
+//         index += 1
+
+// if index == 0:
+//     print("По вашему запросу фильм не найден")
+
 });
