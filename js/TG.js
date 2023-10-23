@@ -1,5 +1,5 @@
 const Form = document.getElementById("form");
-let tg = window.Telegram.WebApp;
+let tg = window.Telegram.webApp;
 
 let Films = {
     "Barbie": {
