@@ -57,6 +57,7 @@ function FilmByYear(FromYear, ToYear)
     }
     
     let dataSend = JSON.stringify(Match);
+    console.log(dataSend)
     tg.sendData(dataSend);
 }
 
