@@ -3,6 +3,7 @@ const token = "6158871311:AAGRPEkXEOgoZKKIYoSWpXLwPX-uQ2GajTU";
 const WebAppURL = "https://bogdanvladimirov.github.io/TgFilmsHTML/";
 const bot = new TelegramApi(token, {polling: true});
 
+
 bot.on("message", msg =>
 {
     const ChatID = msg.chat.id;
@@ -10,15 +11,17 @@ bot.on("message", msg =>
     {
         bot.sendMessage(ChatID, 'Категории фильмов', {
             reply_markup: {
-                inline_keyboard:[
+                keyboard:[
                     [{text: 'Открыть окно', web_app: {url: WebAppURL}}]
                 ]
             }
 
         });
-
+        
     }
+    bot.sendMessage(ChatID, msg.web_app_data.data);
 })
+
 function filmByName() {
     const resultname = [];
     const name = data.name.toLowerCase();  // name - это название фильма
