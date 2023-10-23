@@ -52,7 +52,7 @@ function FilmByYear(FromYear, ToYear)
     {
         if(Films[key]["years"] >= FromYear && Films[key]["years"] <= ToYear)
         {
-            Match.push(Films[key]["path"]);           
+            Match.push(Films[key]);           
         }
     }
     
@@ -70,7 +70,7 @@ function FilmByContry(request)
             console.log()
             if(Films[key]["contry"][cont] == request)
             {
-                Match.push(Films[key]["path"]);
+                Match.push(Films[key]);
                 
             }
         }
@@ -88,7 +88,7 @@ function FilmByGerne(request)
         {
             if(Films[key]["genre"][genre] == request)
             {
-                Match.push(Films[key]["path"]);
+                Match.push(Films[key]);
             }
         }
     }
@@ -105,7 +105,7 @@ function FilmByYearAndContry(FromYear, ToYear, Contry)
         {
             if(Films[key]["years"] >= FromYear && Films[key]["years"] <= ToYear && Films[key]["contry"][contry] == Contry)
             {
-                Match.push(Films[key]["path"]);
+                Match.push(Films[key]);
             }
         }
     }
@@ -122,7 +122,7 @@ function FilmByYearAndGerne(FromYear, ToYear, Genre)
         {
             if(Films[key]["years"] >= FromYear && Films[key]["years"] <= ToYear && Films[key]["genre"][genre] == Genre)
             {
-                Match.push(Films[key]["path"]);
+                Match.push(Films[key]);
             }
         }
     }
