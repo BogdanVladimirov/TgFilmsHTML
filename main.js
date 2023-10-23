@@ -8,35 +8,40 @@ let Films = {
         "years": 2023,
         "contry": ["USA", "Great Britan"],
         "genre": ["comedy", "adventure", "fantasy"],
-        "path": "../TgFilms/Films/2023/Barbie.jpg"
+        "path": "../TgFilms/Films/2023/Barbie.jpg",
+        "name": "Barbie"
     },
 
     "Oppenheimer": {
         "years": 2023,
         "contry": ["USA", "Great Britan"],
         "genre": ["drama", "biography", "history"],
-        "path": "../TgFilms/Films/2023/Oppenheimer.jpg"
+        "path": "../TgFilms/Films/2023/Oppenheimer.jpg",
+        "name": "Oppenheimer"
     },
 
     "Spider-Man: Across the Spider-Verse": {
         "years": 2023,
         "contry": ["USA"],
         "genre": ["cartoon", "science", "fiction", "fantasy", "action", "adventure"],
-        "path": "../TgFilms/Films/2023/Spider-Man_Across-the-Spider-Verse.jpeg"
+        "path": "../TgFilms/Films/2023/Spider-Man_Across-the-Spider-Verse.jpeg",
+        "name": "Spider-Man: Across the Spider-Verse"
     },
 
     "Doctor Strange in the Multiverse of Madness": {
         "years": 2022,
         "contry": ["USA"],
         "genre": ["fantasy", "action", "adventure", "science fiction", "horror"],
-        "path": "../TgFilms/Films/2022/Doctor Strange in the Multiverse of Madness.jpg"
+        "path": "../TgFilms/Films/2022/Doctor Strange in the Multiverse of Madness.jpg",
+        "name": "Doctor Strange in the Multiverse of Madness"
     },
 
     "Venom: Let There Be Carnage": {
         "years": 2021,
         "contry": ["USA", "China"],
         "genre": ["fantasy", "action", "horror"],
-        "path": "../TgFilms/Films/2021/Venom_Let There Be Carnage.jpg"
+        "path": "../TgFilms/Films/2021/Venom_Let There Be Carnage.jpg",
+        "name": "Venom: Let There Be Carnage"
     }
 };
 
@@ -72,7 +77,7 @@ bot.on("message", msg =>
             for(let key of Object.keys(Films))
             {
                 if (JSON.stringify(Films[key]).toLowerCase().includes(Text.toLowerCase())) {
-                    bot.sendMessage(ChatID, JSON.stringify(Films[key]["path"]));
+                    bot.sendMessage(ChatID, Films[key]["name"]);
                     bot.sendPhoto(ChatID, Films[key]["path"]);
                 }
             }
