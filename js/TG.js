@@ -52,7 +52,7 @@ function FilmByYear(FromYear, ToYear)
     {
         if(Films[key]["years"] >= FromYear && Films[key]["years"] <= ToYear)
         {
-            Match.push(key["path"]);           
+            Match.push(Films[key["path"]]);           
         }
     }
     
@@ -70,7 +70,7 @@ function FilmByContry(request)
             console.log()
             if(Films[key]["contry"][cont] == request)
             {
-                Match.push(key["path"]);
+                Match.push(Films[key["path"]]);
                 
             }
         }
@@ -88,7 +88,7 @@ function FilmByGerne(request)
         {
             if(Films[key]["genre"][genre] == request)
             {
-                Match.push(key["path"]);
+                Match.push(Films[key["path"]]);
             }
         }
     }
@@ -105,7 +105,7 @@ function FilmByYearAndContry(FromYear, ToYear, Contry)
         {
             if(Films[key]["years"] >= FromYear && Films[key]["years"] <= ToYear && Films[key]["contry"][contry] == Contry)
             {
-                Match.push(key["path"]);
+                Match.push(Films[key["path"]]);
             }
         }
     }
@@ -122,7 +122,7 @@ function FilmByYearAndGerne(FromYear, ToYear, Genre)
         {
             if(Films[key]["years"] >= FromYear && Films[key]["years"] <= ToYear && Films[key]["genre"][genre] == Genre)
             {
-                Match.push(key["path"]);
+                Match.push(Films[key["path"]]);
             }
         }
     }
@@ -140,7 +140,7 @@ function FilmByContryAndGerne(Contry, Genre)
             {
                 if(Films[key]["contry"][contry] == Contry && Films[key]["genre"][genre] == Genre)
                 {
-                    Match.push(key["path"]);
+                    Match.push(Films[key["path"]]);
                 }
             }
         }
@@ -159,7 +159,7 @@ function FilmByContryAndGerneAndYear(FromYear, ToYear, Contry, Genre)
             {
                 if(Films[key]["contry"][contry] == Contry && Films[key]["genre"][genre] == Genre && Films[key]["years"] >= FromYear && Films[key]["years"] <= ToYear)
                 {
-                    Match.push(key["path"]);
+                    Match.push(Films[key["path"]]);
                 }
             }
         }
