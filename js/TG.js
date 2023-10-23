@@ -140,7 +140,7 @@ function FilmByContryAndGerne(Contry, Genre)
             {
                 if(Films[key]["contry"][contry] == Contry && Films[key]["genre"][genre] == Genre)
                 {
-                    Match.push(Films[key]["path"]);
+                    Match.push(Films[key]);
                 }
             }
         }
@@ -159,7 +159,7 @@ function FilmByContryAndGerneAndYear(FromYear, ToYear, Contry, Genre)
             {
                 if(Films[key]["contry"][contry] == Contry && Films[key]["genre"][genre] == Genre && Films[key]["years"] >= FromYear && Films[key]["years"] <= ToYear)
                 {
-                    Match.push(Films[key]["path"]);
+                    Match.push(Films[key]);
                 }
             }
         }
