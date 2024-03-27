@@ -1,5 +1,5 @@
 const TelegramApi = require("node-telegram-bot-api");
-const token = "6158871311:AAGRPEkXEOgoZKKIYoSWpXLwPX-uQ2GajTU";
+const token = "What Token? Look at the Token in the file";
 const WebAppURL = "https://bogdanvladimirov.github.io/TgFilmsHTML/";
 const bot = new TelegramApi(token, {polling: true});
 
